@@ -2,6 +2,7 @@ package edu.mum.cs.cs425.studentmgmt.model;
 
 import java.util.Date;
 
+@Entity
 public class Student {
     long studentId;
     String studentNumber;
