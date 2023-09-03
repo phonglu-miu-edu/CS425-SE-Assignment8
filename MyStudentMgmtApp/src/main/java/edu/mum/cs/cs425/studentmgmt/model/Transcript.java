@@ -1,8 +1,18 @@
 package edu.mum.cs.cs425.studentmgmt.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "transcript")
 public class Transcript {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long transcriptId;
     String degreeTitle;
+
+    public Transcript() {
+    }
 
     public Transcript(long transcriptId, String degreeTitle) {
         setTranscriptId(transcriptId);

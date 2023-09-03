@@ -1,8 +1,16 @@
 package edu.mum.cs.cs425.studentmgmt.model;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity
+@Table(name = "student")
 public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     long studentId;
     String studentNumber;
     String firstName;
@@ -10,6 +18,17 @@ public class Student {
     String lastName;
     double cgpa;
     Date dateOfEnrollment;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "transcript_id")
+    Transcript transcript;
+    @ManyToMany
+    @JoinTable(name = "student_class"
+            , joinColumns = @JoinColumn(name = "student_id")
+            , inverseJoinColumns = @JoinColumn(name = "class_id"))
+    Set<ClassRoom> classRooms;
+
+    public Student() {
+    }
 
     public Student(String studentNumber, String firstName, String lastName) {
         setStudentNumber(studentNumber);
@@ -79,5 +98,17 @@ public class Student {
 
     public void setDateOfEnrollment(Date dateOfEnrollment) {
         this.dateOfEnrollment = dateOfEnrollment;
+    }
+
+    public Transcript getTranscript() {
+        return this.transcript;
+    }
+
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
+    }
+    public void addClass(ClassRoom classRoom) {
+        this.classRooms = this.classRooms == null ? new HashSet<>() : this.classRooms;
+        this.classRooms.add(classRoom);
     }
 }
