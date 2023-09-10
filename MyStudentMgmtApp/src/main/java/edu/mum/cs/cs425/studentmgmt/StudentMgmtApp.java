@@ -29,8 +29,11 @@ public class StudentMgmtApp implements CommandLineRunner {
 
         ClassRoom classRoom = new ClassRoom("McLaughlin building", "M105");
 
+        // Task 1
         Student s1 = new Student("000-61-0001", "Anna", "Lynn", "Smith", 3.45, new Date("05/24/2019"));
+        // Task 2.1
         s1.setTranscript(transcript);
+        // Task 2.2
         s1.addClass(classRoom);
 
         saveStudent(s1);

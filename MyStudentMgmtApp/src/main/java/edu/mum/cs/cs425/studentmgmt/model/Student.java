@@ -25,7 +25,7 @@ public class Student {
     @JoinColumn(name = "transcript_id")
     Transcript transcript;
     @ManyToMany(cascade=CascadeType.PERSIST)
-    @JoinTable(name = "student_class"
+    @JoinTable(name = "student_classroom"
             , joinColumns = @JoinColumn(name = "student_id")
             , inverseJoinColumns = @JoinColumn(name = "class_id"))
     Set<ClassRoom> classRooms;
