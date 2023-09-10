@@ -3,10 +3,10 @@
 - Student Id: 614616
 - Student Name: Phong Lu
 
-## INSTALLATION
-
-### REQUIREMENTS
+## REQUIREMENTS
 
 Docker
+
+## INSTALLATION
 
 `docker compose up -d`
