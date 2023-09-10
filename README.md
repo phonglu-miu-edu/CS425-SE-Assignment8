@@ -10,3 +10,8 @@ Docker
 ## INSTALLATION
 
 `docker compose up -d`
+
+## RELATIONSHIP DERSCRIPTIONS
+
+- Student and Transcript are 1-1
+- Student and Class are n-n
