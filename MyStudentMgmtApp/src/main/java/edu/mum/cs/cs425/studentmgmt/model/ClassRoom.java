@@ -11,6 +11,7 @@ public class ClassRoom {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long classroomId;
     String buildingName;
+    @Column(nullable = false)
     String roomNumber;
     @ManyToMany(mappedBy = "classRooms")
     Set<Student> students;
@@ -18,8 +19,7 @@ public class ClassRoom {
     public ClassRoom() {
     }
 
-    public ClassRoom(long classroomId, String buildingName, String roomNumber) {
-        setClassroomId(classroomId);
+    public ClassRoom(String buildingName, String roomNumber) {
         setBuildingName(buildingName);
         setRoomNumber(roomNumber);
     }

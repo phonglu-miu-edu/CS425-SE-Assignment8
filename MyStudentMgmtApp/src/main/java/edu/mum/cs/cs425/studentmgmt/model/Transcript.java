@@ -9,13 +9,13 @@ public class Transcript {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long transcriptId;
+    @Column(nullable = false)
     String degreeTitle;
 
     public Transcript() {
     }
 
-    public Transcript(long transcriptId, String degreeTitle) {
-        setTranscriptId(transcriptId);
+    public Transcript(String degreeTitle) {
         setDegreeTitle(degreeTitle);
     }
 

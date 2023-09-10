@@ -12,16 +12,19 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long studentId;
+    @Column(nullable = false)
     String studentNumber;
+    @Column(nullable = false)
     String firstName;
     String middleName;
+    @Column(nullable = false)
     String lastName;
     double cgpa;
     Date dateOfEnrollment;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "transcript_id")
     Transcript transcript;
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.PERSIST)
     @JoinTable(name = "student_class"
             , joinColumns = @JoinColumn(name = "student_id")
             , inverseJoinColumns = @JoinColumn(name = "class_id"))
@@ -36,9 +39,8 @@ public class Student {
         setLastName(lastName);
     }
 
-    public Student(long studentId, String studentNumber, String firstName, String middleName, String lastName, double cgpa, Date dateOfEnrollment) {
+    public Student(String studentNumber, String firstName, String middleName, String lastName, double cgpa, Date dateOfEnrollment) {
         this(studentNumber, firstName, lastName);
-        setStudentId(studentId);
         setMiddleName(middleName);
         setCgpa(cgpa);
         setDateOfEnrollment(dateOfEnrollment);
